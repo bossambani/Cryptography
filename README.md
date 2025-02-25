@@ -41,6 +41,9 @@ Open http://127.0.0.1:8000/ in your browser.
 
 ### Usage
 Enter text in the input field.
+
 Enter a shift key (integer).
+
 Click "Encrypt" to generate encrypted text.
+
 Click "Clear" to reset inputs and output.
