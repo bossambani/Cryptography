@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function clearResult(){
+            document.getElementById("result").innerText = "";
+            document.getElementById("ceasarform").reset();
+        }
+    </script>
+</head>
+<body>
+    <h4><u>CEASAR CIPHER</u></h4>
+    <form action="/" method="post", id="ceasarform">
+        <label for="ceasar">Enter text</label>
+        <input type="text" name="ceasar" required autocomplete="off", autofocus>
+        <br><br>
+        <label for="key">Shift Key</label>
+        <input type="number" name="key" required autocomplete="off", autofocus>
+        <br><br>
+        <input type="submit" value="Encrypt">
+        <input type="button" onclick="clearResult()" value="Clear">
+
+
+        {% if result is defined and result != " " %}
+        <h4><u>ENCRYPTED VALUE</u></h4>
+        <p id="result">{{ result }}</p>
+        {% endif %}
+    </form>
+</body>
+</html>
