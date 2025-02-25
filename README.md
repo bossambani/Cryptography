@@ -2,6 +2,9 @@
 ### Project Overview
 This is a simple Flask-based web application that implements the Caesar Cipher encryption technique. Users can enter text, provide a shift key, and get the encrypted result. The application also features a Clear button to reset inputs and results.
 
+### Screenshot
+![UI ScreenShot](images/ceasar-cipher.png)
+
 ### Features
 #### ✅ Encrypts text using the Caesar Cipher algorithm.
 #### ✅ Supports both letters and digits.
