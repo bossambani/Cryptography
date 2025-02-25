@@ -18,7 +18,7 @@ This is a simple Flask-based web application that implements the Caesar Cipher e
 Clone the repository
 
 
-git clone https://github.com/your-username/caesar-cipher-app.git
+git clone https://github.com/bossambani/Cryptography
 
 cd caesar-cipher-app
 
