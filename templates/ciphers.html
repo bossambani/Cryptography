@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Available Ciphers</h2>
+<ul>
+    {% for cipher in ciphers %}
+    <li>
+        <strong>{{ cipher.name }}</strong><br>
+        <em>{{ cipher.description }}</em><br>
+        <button disabled>Coming Soon</button>
+    </li>
+    <hr>
+    {% endfor %}
+</ul>
+{% endblock %}

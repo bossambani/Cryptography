@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="container">
+    <div class="row">
+    <h2 class="text-center" >Sign_Up</h2>
+    <form method="post" action="{{ url_for('views.signup') }}">
+        <div class="mb-5">
+        <input type="text" name="username" class="form-control" placeholder="Username" required autocomplete="off" autofocus>
+        </div>
+
+        <div class="mb-5">
+        <input type="email" name="email" class="form-control" placeholder="Email" required autocomplete="off" autofocus>
+        </div>
+
+        <div class="mb-5">
+        <input type="password" name="password1" class="form-control" placeholder="Password" required autocomplete="off" autofocus>
+        </div>
+
+        <div class="mb-5">
+        <input type="password" name="password2" class="form-control" placeholder="Confirm Password" required autocomplete="off" autofocus>
+        </div>
+
+        <div class="mb-5">
+        <input type="submit" value="Sign Up" class="btn btn-primary w-100">
+        </div>
+    </form>
+{% endblock %}
+    </div>
+</div>
