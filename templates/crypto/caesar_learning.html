@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-5">
+  <div class="card shadow-lg p-4 bg-dark text-light">
+    <h2 class="text-center mb-4">🔢 Caesar Cipher - Learn the Basics</h2>
+    
+    <div class="mb-4">
+      <h4>🔍 What is Caesar Cipher?</h4>
+      <p>The Caesar Cipher is one of the simplest and most well-known encryption techniques. It is a type of substitution cipher in which each letter in the plaintext is shifted a certain number of places down or up the alphabet.</p>
+    </div>
+
+    <div class="mb-4">
+      <h4>📚 How it Works</h4>
+      <ul>
+        <li>Each letter of the plaintext is replaced by a letter with a fixed number of positions down the alphabet.</li>
+        <li>For example, with a shift of 3: <code>A → D, B → E, C → F</code>, and so on.</li>
+        <li>It wraps around the alphabet: <code>X → A, Y → B, Z → C</code>.</li>
+      </ul>
+    </div>
+
+    <div class="mb-4">
+      <h4>🎯 Example</h4>
+      <p><strong>Plaintext:</strong> HELLO<br>
+         <strong>Shift:</strong> 3<br>
+         <strong>Ciphertext:</strong> KHOOR</p>
+    </div>
+
+    <div class="mb-4">
+      <h4>💡 Try it Yourself!</h4>
+      <form method="POST" action="{{ url_for('crypto.caesar_quiz') }}">
+        <div class="mb-3">
+          <label class="form-label">Enter a Message:</label>
+          <input type="text" name="plaintext" class="form-control bg-dark text-light border-secondary" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Shift (Number):</label>
+          <input type="number" name="shift" class="form-control bg-dark text-light border-secondary" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Encrypt Message</button>
+      </form>
+    </div>
+
+    {% if result %}
+    <div class="alert alert-success mt-4">
+      <strong>Encrypted Message:</strong> {{ result }}
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="card mt-5 shadow-lg p-4 bg-secondary text-light">
+    <h3 class="text-center">🧠 Quick Quiz - Test Your Knowledge</h3>
+    <form method="POST" action="{{ url_for('crypto.caesar_quiz') }}">
+      <div class="mb-3">
+        <label class="form-label">1. What type of cipher is Caesar Cipher?</label>
+        <select class="form-select bg-dark text-light border-light" name="q1" required>
+          <option value="">-- Choose an answer --</option>
+          <option value="Substitution">Substitution</option>
+          <option value="Transposition">Transposition</option>
+          <option value="Block">Block</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">2. What is the ciphertext of 'ABC' using shift 1?</label>
+        <select class="form-select bg-dark text-light border-light" name="q2" required>
+          <option value="">-- Choose an answer --</option>
+          <option value="BCD">BCD</option>
+          <option value="DEF">DEF</option>
+          <option value="XYZ">XYZ</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-light w-100">Submit Quiz</button>
+    </form>
+
+    {% if quiz_score is defined %}
+    <div class="alert alert-info mt-4 text-center">
+      Your Score: {{ quiz_score }}/2
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

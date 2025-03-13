@@ -1,29 +1,36 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 {% block content %}
-<div class="container">
-    <div class="row">
-    <h2 class="text-center" >Sign_Up</h2>
+<div class="container my-5 d-flex justify-content-center align-items-center">
+  <div class="card shadow-lg p-4" style="width: 100%; max-width: 500px; background-color: var(--bs-dark-bg-subtle); color: var(--bs-light);">
+    <h2 class="text-center mb-4">✨ Sign Up</h2>
     <form method="post" action="{{ url_for('views.signup') }}">
-        <div class="mb-5">
-        <input type="text" name="username" class="form-control" placeholder="Username" required autocomplete="off" autofocus>
-        </div>
+      
+      <div class="mb-4">
+        <label class="form-label">Username</label>
+        <input type="text" name="username" class="form-control bg-dark text-light border-secondary" placeholder="Enter your username" required autocomplete="off">
+      </div>
 
-        <div class="mb-5">
-        <input type="email" name="email" class="form-control" placeholder="Email" required autocomplete="off" autofocus>
-        </div>
+      <div class="mb-4">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" class="form-control bg-dark text-light border-secondary" placeholder="Enter your email" required autocomplete="off">
+      </div>
 
-        <div class="mb-5">
-        <input type="password" name="password1" class="form-control" placeholder="Password" required autocomplete="off" autofocus>
-        </div>
+      <div class="mb-4">
+        <label class="form-label">Password</label>
+        <input type="password" name="password1" class="form-control bg-dark text-light border-secondary" placeholder="Create password" required autocomplete="off">
+      </div>
 
-        <div class="mb-5">
-        <input type="password" name="password2" class="form-control" placeholder="Confirm Password" required autocomplete="off" autofocus>
-        </div>
+      <div class="mb-4">
+        <label class="form-label">Confirm Password</label>
+        <input type="password" name="password2" class="form-control bg-dark text-light border-secondary" placeholder="Confirm password" required autocomplete="off">
+      </div>
 
-        <div class="mb-5">
-        <input type="submit" value="Sign Up" class="btn btn-primary w-100">
-        </div>
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary btn-lg">
+          <i class="fas fa-user-plus me-2"></i> Sign Up
+        </button>
+      </div>
     </form>
-{% endblock %}
-    </div>
+  </div>
 </div>
+{% endblock %}

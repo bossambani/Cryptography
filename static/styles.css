@@ -61,4 +61,29 @@ body.dark-mode {
 .dark-mode .btn-primary:hover {
     background-color: #5a5a5a;
   }
+.form-control:focus {
+  background-color: #1e1e1e;
+  border-color: #6c757d;
+  color: #fff;
+}
 
+.card {
+  border-radius: 1rem;
+}
+
+.btn-primary:hover {
+  background-color: #0d6efd;
+  box-shadow: 0 0 10px rgba(13, 110, 253, 0.6);
+}
+body {
+    padding-left: 250px; /* Shifts the main content so it doesn't overlap with sidebar */
+  }
+
+  @media (max-width: 768px) {
+    body {
+      padding-left: 0;
+    }
+    .sidebar {
+      display: none; /* Optional: hide sidebar on small screens */
+    }
+  }

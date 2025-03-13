@@ -10,20 +10,36 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-        <div class="container-fluid">
-            <div class="nav-btns">
-                <a href="{{ url_for('views.home') }}" class="btn btn-outline-primary">Home</a>
-                <a href="{{ url_for('views.signup') }}" class="btn btn-outline-success">Signup</a>
-                <a href="{{ url_for('views.login') }}" class="btn btn-outline-info">Login</a>
-                <a href="{{ url_for('views.ciphers') }}" class="btn btn-outline-warning">Ciphers</a>
-            </div>
 
-    <!-- Dark Mode Toggle Switch -->
-    <div class="theme-toggle me-3" id="themeToggle">
-        <i class="icon-sun" id="themeIcon" style="font-size: 1.5rem; cursor: pointer;"></i>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+    <a class="navbar-brand fw-bold" href="{{ url_for('views.home') }}">Cipher App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('views.home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('views.signup') }}">Signup</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('views.login') }}">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('views.ciphers') }}">Ciphers</a>
+        </li>
+      </ul>
+ 
+      <div class="ms-3" id="themeToggle">
+        <i class="icon-sun" id="themeIcon" style="font-size: 1.5rem; cursor: pointer; color: #fff;"></i>
       </div>
-    </nav>
+    </div>
+  </nav>
+  
 
    <!-- Flash Messages -->
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -38,6 +54,33 @@
             </div>
         {% endif %}
     {% endwith %}
+
+    <!-- Sidebar Component - Can be included in base.html -->
+<div class="d-flex flex-column p-3 bg-dark text-white" style="width: 250px; height: 100vh; position: fixed; top: 0; left: 0;">
+    <h4 class="mb-4 text-center">🔐 Crypto Learn</h4>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="{{ url_for('views.home') }}" class="nav-link text-white">🏠 Home</a>
+      </li>
+      <li>
+        <a href="{{ url_for('crypto.caesar_learning') }}" class="nav-link text-white">🧠 Caesar Cipher</a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white disabled">🔜 Vigenère Cipher</a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white disabled">🔜 Playfair Cipher</a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white disabled">🔜 RSA Basics</a>
+      </li>
+    </ul>
+    <hr>
+    <div class="text-center">
+      <small>&copy; 2025 CryptoLearn</small>
+    </div>
+  </div>
+  
 
 
 <!-- Main Content -->

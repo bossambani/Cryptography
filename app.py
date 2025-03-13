@@ -1,6 +1,7 @@
 from flask import Flask
 from views import views
 from model import db
+from crypto import crypto
 
 app = Flask(__name__)
 app.secret_key = '9f4a3e84b2a1c749d73b3c8f5a6c4a1e'
@@ -14,6 +15,8 @@ db.init_app(app)
 
 #Registering Blueprints
 app.register_blueprint(views)
+app.register_blueprint(crypto, url_prefix='/crypto')
+
 
 #creating tables if they don't exist
 with app.app_context():

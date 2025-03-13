@@ -1,19 +1,42 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 {% block content %}
-    <div class="container">
-    <h2 class="text-center">Login</h2>
+<div class="container my-5 d-flex justify-content-center align-items-center">
+  <div class="card shadow-lg p-4" style="width: 100%; max-width: 500px; background-color: var(--bs-dark-bg-subtle); color: var(--bs-light);">
+    <h2 class="text-center mb-4">🔐 Login</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
     <form method="post" action="{{ url_for('views.login') }}">
-        <div class="mb-5">
-        <input type="text" name="username" class="form-control" placeholder="Username" required autocomplete="off" autofocus>
-        </div>
+      <div class="mb-4">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" name="username" id="username" class="form-control bg-dark text-light border-secondary" placeholder="Enter your username" required autocomplete="off" autofocus>
+      </div>
 
-        <div class="mb-5">
-        <input type="password" name="password1" class="form-control" placeholder="Password" required autocomplete="off" autofocus>
-        </div>
+      <div class="mb-4">
+        <label for="password1" class="form-label">Password</label>
+        <input type="password" name="password1" id="password1" class="form-control bg-dark text-light border-secondary" placeholder="Enter your password" required autocomplete="off">
+      </div>
 
-        <div class="mb-5">
-        <input type="submit" value="Login" class="btn btn-primary w-100">
-        </div>
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary btn-lg">
+          <i class="fas fa-sign-in-alt me-2"></i> Login
+        </button>
+      </div>
     </form>
-    </div>
+
+    <p class="text-center mt-3" style="color: blue;">
+      Don’t have an account?
+      <a href="{{ url_for('views.signup') }}" style="color: blue;">Sign Up</a>
+    </p>
+  </div>
+</div>
 {% endblock %}
