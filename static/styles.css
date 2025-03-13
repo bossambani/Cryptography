@@ -1,6 +1,10 @@
 body {
     background-color: #f8f9fa;
 }
+.custom-wide-container {
+    max-width: 95%;
+    margin: 0 auto;
+}
 .container {
     max-width: 500px;
     margin-top: 50px;
@@ -13,3 +17,48 @@ body {
     font-weight: bold;
     color: #007bff;
 }
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.theme-toggle i {
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+body.dark-mode .icon-sun::before {
+    content: "\f186"; /* Moon icon */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: #f1c40f;
+    transform: rotate(360deg);
+  }
+
+body:not(.dark-mode) .icon-sun::before {
+    content: "\f185"; /* Sun icon */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: #ffa500;
+    transform: rotate(0deg);
+  }
+
+body.dark-mode {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+  }
+
+.dark-mode .card, .dark-mode .accordion-item {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+  }
+
+.dark-mode .btn-primary {
+    background-color: #4a4a4a;
+    border-color: #4a4a4a;
+  }
+
+.dark-mode .btn-primary:hover {
+    background-color: #5a5a5a;
+  }
+
