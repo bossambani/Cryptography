@@ -1,7 +1,8 @@
 from flask import Flask
 from views import views
-from model import db
+from model import db, User
 from crypto import crypto
+from flask_login import LoginManager
 
 app = Flask(__name__)
 app.secret_key = '9f4a3e84b2a1c749d73b3c8f5a6c4a1e'
@@ -21,6 +22,15 @@ app.register_blueprint(crypto, url_prefix='/crypto')
 #creating tables if they don't exist
 with app.app_context():
     db.create_all()
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'auth.login'
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=9000)

@@ -45,7 +45,7 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 flash("Logged in Successfully!", "success")
-                return redirect(url_for('views.cipher'))
+                return redirect(url_for('views.ciphers'))
             else:
                 flash("Incorrect Password", 'error')
         else:

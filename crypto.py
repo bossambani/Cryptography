@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for
+from flask_login import login_required
 
 crypto = Blueprint('crypto', __name__)
 
@@ -14,6 +15,7 @@ def caesar_encrypt(text, shift):
     return result
 
 @crypto.route('/caesar', methods=['GET', 'POST'])
+@login_required
 def caesar_learning():
     result = None
     if request.method == 'POST':
@@ -23,6 +25,7 @@ def caesar_learning():
     return render_template('crypto/caesar_learning.html', result=result)
 
 @crypto.route('/caesar/quiz', methods=['POST'])
+@login_required
 def caesar_quiz():
     score = 0
     q1 = request.form.get('q1')
