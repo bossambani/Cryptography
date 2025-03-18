@@ -37,7 +37,8 @@
     </div>
   </div>
 
-  <!-- New Section: How It Works -->
+  {% if current_user.is_authenticated %}
+  <!-- Dashboard-Only Section: How It Works -->
   <hr class="my-5">
   <div class="row text-center">
     <h2 class="mb-4">🛠️ How It Works</h2>
@@ -58,7 +59,7 @@
     </div>
   </div>
 
-  <!-- New Section: Testimonials -->
+  <!-- Dashboard-Only Section: Testimonials -->
   <hr class="my-5">
   <div class="text-center">
     <h2 class="mb-4">💬 What Users Are Saying</h2>
@@ -83,6 +84,7 @@
       </blockquote>
     </div>
   </div>
+  {% endif %}
 
 </div>
 {% endblock %}

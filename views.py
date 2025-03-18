@@ -1,4 +1,5 @@
-from flask import Flask, redirect, render_template, request,url_for, flash, Blueprint, jsonify
+from flask import  redirect, render_template, request,url_for, Blueprint, jsonify, session
+from flask_login import login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from model import db, User
 views = Blueprint('views', __name__)
@@ -54,12 +55,21 @@ def login():
     user = User.query.filter_by(username=username).first()
 
     if user and check_password_hash(user.password, password):
+
+        session['user_id'] = user.id
+        session['username'] = user.username
+
         return jsonify({'message': 'Login Successfully'}), 200
     elif user:
         return jsonify({'error': 'Incorrect Password'}), 401
     else:
         return jsonify({'error': 'User does not exist'}), 404
   
+
+@views.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('views.login_page'))
 
 @views.route('/ciphers')
 def ciphers():
@@ -70,6 +80,12 @@ def ciphers():
         
     ]
     return render_template('ciphers.html', ciphers=cipher_list)
+
+@views.route('/dashboard')
+def dashboard():
+    if 'user_id' not in session:
+        return redirect(url_for('views.login_page'))
+    return render_template("dashboard.html", username=session.get('username'))
 
     
 

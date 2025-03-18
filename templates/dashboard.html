@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="custom-wide-container my-5">
+
+  <!-- Header & Logout -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h1 class="fw-bold">🔐 Welcome back, {{ username }}!</h1>
+      <p class="text-muted">Your personal encryption command center.</p>
+    </div>
+    <a href="{{ url_for('views.logout') }}" class="btn btn-outline-danger">
+      Logout <i class="fas fa-sign-out-alt ms-2"></i>
+    </a>
+  </div>
+
+  <!-- Toolbox Section -->
+  <div class="card shadow-sm rounded-4 mb-5">
+    <div class="card-body">
+      <h2 class="mb-4 text-primary">🧰 Your Encryption Toolbox</h2>
+      <div class="row text-center">
+        <div class="col-md-4 mb-4">
+          <i class="fas fa-shield-alt fa-3x text-info mb-2"></i>
+          <h5>Try a Cipher</h5>
+          <p>Jump right into Caesar, Vigenère, Atbash, and more.</p>
+          <a href="{{ url_for('views.ciphers') }}" class="btn btn-primary btn-sm">Go to Cipher Tools</a>
+        </div>
+        <div class="col-md-4 mb-4">
+          <i class="fas fa-chart-line fa-3x text-success mb-2"></i>
+          <h5>Encryption Stats</h5>
+          <p>Track how many messages you've encrypted and decrypted.</p>
+          <a href="#" class="btn btn-outline-success btn-sm disabled">Coming Soon</a>
+        </div>
+        <div class="col-md-4 mb-4">
+          <i class="fas fa-user-cog fa-3x text-warning mb-2"></i>
+          <h5>Manage Account</h5>
+          <p>Update your profile settings and security preferences.</p>
+          <a href="#" class="btn btn-outline-secondary btn-sm disabled">Coming Soon</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Learning Hub -->
+  <div class="card shadow-sm rounded-4 mb-5 bg-light">
+    <div class="card-body">
+      <h2 class="mb-4 text-success">📚 Learning Hub</h2>
+      <div class="row text-center">
+        <div class="col-md-6">
+          <i class="fas fa-brain fa-2x text-primary mb-2"></i>
+          <h5>Understand Cipher Logic</h5>
+          <p>Learn how classic ciphers transform messages behind the scenes.</p>
+        </div>
+        <div class="col-md-6">
+          <i class="fas fa-laptop-code fa-2x text-danger mb-2"></i>
+          <h5>Interactive Tutorials</h5>
+          <p>Follow step-by-step tutorials and try live examples right inside the app.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cipher Challenge of the Day -->
+  <div class="card shadow-sm rounded-4 bg-white">
+    <div class="card-body text-center">
+      <h2 class="text-warning mb-3">🎯 Cipher Challenge of the Day</h2>
+      <p class="lead">🕵️‍♂️ Can you decode this message?</p>
+      <div class="p-3 border rounded bg-light mb-3">
+        <code class="h5">KHOOR ZRUOG</code> <br>
+        <small class="text-muted">(Hint: It's a Caesar cipher!)</small>
+      </div>
+      <a href="{{ url_for('views.ciphers') }}" class="btn btn-outline-primary btn-sm">
+        Try to Decrypt Now <i class="fas fa-key ms-1"></i>
+      </a>
+    </div>
+  </div>
+    <!-- Footer Quote -->
+    <div class="text-center text-muted mt-5">
+        <blockquote class="blockquote text-white">
+          <p>"In a world full of noise, encryption is your whisper."</p>
+          <footer class="blockquote-footer text-white">Cipher App Team</footer>
+        </blockquote>
+      </div>
+
+</div>
+{% endblock %}

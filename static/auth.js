@@ -54,7 +54,7 @@ if (loginForm) {
     messageDiv.innerHTML = '';
 
     try {
-      const res = await fetch('http://localhost:9000/api/login', {
+      const res = await fetch('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
@@ -64,13 +64,13 @@ if (loginForm) {
 
       if (res.status === 200) {
         messageDiv.innerHTML = `<div class="alert alert-success">✅ ${data.message}</div>`;
-        setTimeout(() => window.location.href = "/ciphers", 2000);
+        setTimeout(() => window.location.href = "/dashboard", 1500);
       } else {
         messageDiv.innerHTML = `<div class="alert alert-danger">❌ ${data.error}</div>`;
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
       }
-
     } catch (err) {
-      console.error(err);
       messageDiv.innerHTML = `<div class="alert alert-danger">❌ Something went wrong. Try again.</div>`;
     }
   });
