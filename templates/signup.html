@@ -3,26 +3,29 @@
 <div class="container my-5 d-flex justify-content-center align-items-center">
   <div class="card shadow-lg p-4" style="width: 100%; max-width: 500px; background-color: var(--bs-dark-bg-subtle); color: var(--bs-light);">
     <h2 class="text-center mb-4">✨ Sign Up</h2>
-    <form method="post" action="{{ url_for('views.signup') }}">
-      
+
+    <!-- Message area for success/error -->
+    <div id="signup-message" class="mb-3"></div>
+
+    <form id="signup-form">
       <div class="mb-4">
         <label class="form-label">Username</label>
-        <input type="text" name="username" class="form-control bg-dark text-light border-secondary" placeholder="Enter your username" required autocomplete="off">
+        <input id="username" type="text" name="username" class="form-control bg-dark text-light border-secondary" placeholder="Enter your username" required autocomplete="off">
       </div>
 
       <div class="mb-4">
         <label class="form-label">Email</label>
-        <input type="email" name="email" class="form-control bg-dark text-light border-secondary" placeholder="Enter your email" required autocomplete="off">
+        <input id="email" type="email" name="email" class="form-control bg-dark text-light border-secondary" placeholder="Enter your email" required autocomplete="off">
       </div>
 
       <div class="mb-4">
         <label class="form-label">Password</label>
-        <input type="password" name="password1" class="form-control bg-dark text-light border-secondary" placeholder="Create password" required autocomplete="off">
+        <input id="password" type="password" name="password1" class="form-control bg-dark text-light border-secondary" placeholder="Create password" required autocomplete="off">
       </div>
 
       <div class="mb-4">
         <label class="form-label">Confirm Password</label>
-        <input type="password" name="password2" class="form-control bg-dark text-light border-secondary" placeholder="Confirm password" required autocomplete="off">
+        <input id="confirm-password" type="password" name="password2" class="form-control bg-dark text-light border-secondary" placeholder="Confirm password" required autocomplete="off">
       </div>
 
       <div class="d-grid">

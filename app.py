@@ -1,10 +1,12 @@
 from flask import Flask
+from flask_cors import CORS
 from views import views
 from model import db, User
 from crypto import crypto
 from flask_login import LoginManager
 
 app = Flask(__name__)
+CORS(app)
 app.secret_key = '9f4a3e84b2a1c749d73b3c8f5a6c4a1e'
 
 #Configure sqlite database
