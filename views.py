@@ -37,23 +37,29 @@ def signup():
 
     return jsonify({'message': 'Signup successful'}), 201
 
-@views.route("/login", methods=['GET', 'POST'])
+@views.route("/login")
+def login_page():
+    return render_template("login.html")
+
+@views.route("/api/login", methods=['POST'])
 def login():
-    if request.method == "POST":
-        username = request.form['username']
-        password = request.form['password1']
+    data = request.get_json()
 
-        user = User.query.filter_by(username=username).first()
-        if user:
-            if check_password_hash(user.password, password):
-                flash("Logged in Successfully!", "success")
-                return redirect(url_for('views.ciphers'))
-            else:
-                flash("Incorrect Password", 'error')
-        else:
-            flash("user does not exist", "error")
+    username = data.get('username', '').strip()
+    password = data.get('password', '').strip()
 
-    return render_template('login.html')
+    if not username or not password:
+        return jsonify({'error': 'All fields are required'}), 400
+    
+    user = User.query.filter_by(username=username).first()
+
+    if user and check_password_hash(user.password, password):
+        return jsonify({'message': 'Login Successfully'}), 200
+    elif user:
+        return jsonify({'error': 'Incorrect Password'}), 401
+    else:
+        return jsonify({'error': 'User does not exist'}), 404
+  
 
 @views.route('/ciphers')
 def ciphers():

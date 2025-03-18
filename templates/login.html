@@ -15,7 +15,9 @@
       {% endif %}
     {% endwith %}
 
-    <form method="post" action="{{ url_for('views.login') }}">
+    <div id="login-message" class="mb-3"></div>
+
+    <form id="login-form">
       <div class="mb-4">
         <label for="username" class="form-label">Username</label>
         <input type="text" name="username" id="username" class="form-control bg-dark text-light border-secondary" placeholder="Enter your username" required autocomplete="off" autofocus>
@@ -23,7 +25,7 @@
 
       <div class="mb-4">
         <label for="password1" class="form-label">Password</label>
-        <input type="password" name="password1" id="password1" class="form-control bg-dark text-light border-secondary" placeholder="Enter your password" required autocomplete="off">
+        <input type="password" name="password1" id="password" class="form-control bg-dark text-light border-secondary" placeholder="Enter your password" required autocomplete="off">
       </div>
 
       <div class="d-grid">
